@@ -1,7 +1,7 @@
 const url = 'https://api.harvardartmuseums.org/image?apikey=9b4d0562-e0ec-4df2-9f9f-6b9399e5e704'
 
 
-let links = document.querySelectorAll("a");
+let links = document.querySelectorAll("h3");
 const hamburger = document.querySelector(".hamburger");
 const menu = document.querySelector(".menu")
 //
@@ -20,15 +20,17 @@ fetch(url)
   function renderResults(picData) {
     //console.log(picData.records)
     picData.records.forEach((pic) => {
-       console.log(pic.baseimageurl)
+      console.log(pic.baseimageurl)
           const cardInfo = `
             <div class="picContainer">
+            <img src="${pic.baseimageurl}" height="500" width="350">
             </div>
           `
           picContainer.insertAdjacentHTML('beforeend', cardInfo)
-      })
+    })
   }
-  //let photos = pic.baseimageurl
+  
+  
 
 /*function renderResults(picData) {
   console.log(picData)

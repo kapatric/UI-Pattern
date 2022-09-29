@@ -14,7 +14,12 @@ li {
 list-style: none;
 }
 
-a {
+h1 {
+  color: rgb(37, 222, 151);
+text-decoration: none;
+}
+
+h3 {
   color: rgb(37, 222, 151);
 text-decoration: none;
 }
@@ -64,6 +69,10 @@ color: azure;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
   background-color: azure;
+}
+
+#banner-container {
+  margin: 75px;
 }
 
 @media(max-width:1265px){
