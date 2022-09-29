@@ -1,36 +1,54 @@
-const url = 'https://api.harvardartmuseums.org/image?apikey=9b4d0562-e0ec-4df2-9f9f-6b9399e5e704'
-
+const url =
+  "https://api.harvardartmuseums.org/image?apikey=9b4d0562-e0ec-4df2-9f9f-6b9399e5e704";
 
 let links = document.querySelectorAll("h3");
 const hamburger = document.querySelector(".hamburger");
-const menu = document.querySelector(".menu")
-//
+const menu = document.querySelector(".menu");
+let art = document.querySelector(".menu-link");
+let img = document.querySelector("img");
+let picContainer = document.querySelector("#banner-container");
+
 //links.addEventListener("click", );
 fetch(url)
-    .then(res => res.json())
-  .then(data => {
-   // console.log(data.records)
-    renderResults(data) 
-  })
- 
-  
-  let picContainer = document.querySelector("#banner-container")
+  .then((res) => res.json())
+  .then((data) => {
+    // console.log(data.records)
+    renderResults(data);
+  });
 
 
-  function renderResults(picData) {
-    //console.log(picData.records)
-    picData.records.forEach((pic) => {
-      console.log(pic.baseimageurl)
-          const cardInfo = `
-            <div class="picContainer">
-            <img src="${pic.baseimageurl}" height="500" width="350">
-            </div>
-          `
-          picContainer.insertAdjacentHTML('beforeend', cardInfo)
-    })
-  }
-  
-  
+function renderResults(picData) {
+  picData.records.forEach((pic, i) => {
+    // const cardInfo = `
+    //   <div class="picContainer">
+    //   <img src="${pic.baseimageurl}" height="500" width="350">
+    //   </div>
+    // `
+    const menuItemHTML = `
+        <li class="menu-item">
+          <h3 class="menu-link" data-id="${pic.id}">Piece ${i + 1}</h3>
+        </li>    
+      `;
+    // picContainer.insertAdjacentHTML('beforeend', cardInfo)
+    menu.insertAdjacentHTML("beforeend", menuItemHTML);
+  });
+
+  img.src = picData.records[0].baseimageurl
+
+  let menuItems = document.querySelectorAll(".menu-item");
+
+  menuItems.forEach((item) => {
+    item.addEventListener("click", (e) => handleImgSrc(e, picData.records));
+  });
+}
+
+function handleImgSrc(e, records) {
+  let recordFound = records.find((rec) => {
+    return rec.id == e.target.dataset.id;
+  });
+
+  img.src = recordFound.baseimageurl
+}
 
 /*function renderResults(picData) {
   console.log(picData)
@@ -45,11 +63,11 @@ fetch(url)
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   menu.classList.toggle("active");
-  
-})
+});
 
-document.querySelectorAll(".menu-link").forEach(n =>
+document.querySelectorAll(".menu-link").forEach((n) =>
   n.addEventListener("click", () => {
     hamburger.classList.remove("active");
     menu.classList.toggle("active");
-  }))
+  })
+);
