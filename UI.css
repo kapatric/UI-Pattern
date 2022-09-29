@@ -1,36 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Oswald:wght@300&display=swap');
 
-body {
+*{
+  padding: 0;
+  margin: 0;
+}
+
+header {
   font-family: "Oswald";
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+}
+
+li {
+list-style: none;
+}
+
+a{
+  color: rgb(37, 222, 151);
+text-decoration: none;
+}
+
+body {
+  background-color: rgb(234, 228, 228);
+}
+.container{
+ max-width: 1024px;
+ width: 90%;
+ margin: 0 auto;
 }
 
 .navbar {
-  width: 100%;
-  box-shadow: 0 3px 7px rgba(18, 20, 22, 0.15);
-}
-
-.nav-container {
+  min-height: 65px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  height: 45px;
+  align-items: center;
 }
 
-.navbar .menu-items {
+.nav-branding {
+  font-size:xx-large;
+}
+
+.menu {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 50px;
 }
 
-.navbar .nav-container li {
-  list-style: none;
-}
-
-.navbar .nav-container a {
-  text-decoration: none;
-  color: #0e2431;
-  font-weight: 500;
-  font-size: 1.2rem;
-  padding: 0.7rem;
-}
-.navbar .nav-container a:hover{
-  font-weight: bolder;
+.menu-link {
+  transition: 0.4 ease-out;
 }

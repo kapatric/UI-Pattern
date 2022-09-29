@@ -10,13 +10,29 @@ fetch(url)
    // console.log(data.records)
     renderResults(data) 
   })
-    
-function renderResults(picData) {
+ 
+  
+  let picContainer = document.querySelector("#banner-container")
+
+
+  function renderResults(picData) {
+    console.log(picData.records)
+    picData.records.forEach((pic) => {
+        console.log(pic.baseimageurl)
+          const cardInfo = `
+            <div class="picContainer">
+              <img src="${pic.baseimageurl}"/ ">
+            </div>
+          `
+          picContainer.insertAdjacentHTML('beforeend', cardInfo)
+      })
+  }
+/*function renderResults(picData) {
   console.log(picData)
   picData.records.forEach((pic) => {
     // console.log(pic.baseimageurl)
-    let a = document.getElementsByTagName("a")
     let piece = pic.baseimageurl
-    piece.append(a)
-  });
+    piece.append(links)
+  })
 }
+*/
