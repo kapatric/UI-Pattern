@@ -2,6 +2,8 @@ const url = 'https://api.harvardartmuseums.org/image?apikey=9b4d0562-e0ec-4df2-9
 
 
 let links = document.querySelectorAll("a");
+const hamburger = document.querySelector(".hamburger");
+const menu = document.querySelector(".menu")
 //
 //links.addEventListener("click", );
 fetch(url)
@@ -16,23 +18,36 @@ fetch(url)
 
 
   function renderResults(picData) {
-    console.log(picData.records)
+    //console.log(picData.records)
     picData.records.forEach((pic) => {
-        console.log(pic.baseimageurl)
+       console.log(pic.baseimageurl)
           const cardInfo = `
             <div class="picContainer">
-              <img src="${pic.baseimageurl}"/ ">
             </div>
           `
           picContainer.insertAdjacentHTML('beforeend', cardInfo)
       })
   }
+  //let photos = pic.baseimageurl
+
 /*function renderResults(picData) {
   console.log(picData)
   picData.records.forEach((pic) => {
     // console.log(pic.baseimageurl)
-    let piece = pic.baseimageurl
+    
     piece.append(links)
   })
 }
 */
+
+hamburger.addEventListener("click", () => {
+  hamburger.classList.toggle("active");
+  menu.classList.toggle("active");
+  
+})
+
+document.querySelectorAll(".menu-link").forEach(n =>
+  n.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    menu.classList.toggle("active");
+  }))
