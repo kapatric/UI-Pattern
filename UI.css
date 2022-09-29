@@ -1,2 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Londrina+Shadow&family=Oswald:wght@300&display=swap');
 
+body {
+  font-family: "Oswald";
+}
+
+.navbar {
+  width: 100%;
+  box-shadow: 0 3px 7px rgba(18, 20, 22, 0.15);
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 45px;
+}
+
+.navbar .menu-items {
+  display: flex;
+}
+
+.navbar .nav-container li {
+  list-style: none;
+}
+
+.navbar .nav-container a {
+  text-decoration: none;
+  color: #0e2431;
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.7rem;
+}
+.navbar .nav-container a:hover{
+  font-weight: bolder;
+}
