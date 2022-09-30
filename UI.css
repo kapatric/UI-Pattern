@@ -81,8 +81,12 @@ img {
   height: auto;
   object-fit: scale-down;
   overflow: hidden;
+  border-style: double ridge;
+  padding: 30px;
 }
-
+.search {
+  right: 0;
+}
 
 
 @media(min-width:768px){
