@@ -1,5 +1,5 @@
 const url =
-  "https://api.harvardartmuseums.org/image?apikey=9b4d0562-e0ec-4df2-9f9f-6b9399e5e704";
+  "https://api.harvardartmuseums.org/image?size=20&apikey=79d0b1b5-6d83-4823-9c14-b50caba0f7ae";
 
 let links = document.querySelectorAll("h3");
 const hamburger = document.querySelector(".hamburger");
@@ -12,7 +12,7 @@ let picContainer = document.querySelector("#banner-container");
 fetch(url)
   .then((res) => res.json())
   .then((data) => {
-    // console.log(data.records)
+     console.log(data.records)
     renderResults(data);
   });
 
@@ -26,7 +26,7 @@ function renderResults(picData) {
     // `
     const menuItemHTML = `
         <li class="menu-item">
-          <h3 class="menu-link" data-id="${pic.id}">Piece ${i + 1}</h3>
+          <h3 class="menu-link" data-id="${pic.id}">Lot ${pic.id}</h3>
         </li>    
       `;
     // picContainer.insertAdjacentHTML('beforeend', cardInfo)
@@ -44,7 +44,10 @@ function renderResults(picData) {
 
 function handleImgSrc(e, records) {
   let recordFound = records.find((rec) => {
+    menu.classList.remove("active");
+    hamburger.classList.remove("active");
     return rec.id == e.target.dataset.id;
+  
   });
 
   img.src = recordFound.baseimageurl
@@ -63,11 +66,12 @@ function handleImgSrc(e, records) {
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   menu.classList.toggle("active");
+  
 });
 
 document.querySelectorAll(".menu-link").forEach((n) =>
   n.addEventListener("click", () => {
     hamburger.classList.remove("active");
-    menu.classList.toggle("active");
+    menu.classList.remove("active");
   })
 );
